@@ -1,0 +1,8 @@
+spring.application.name: barkavia
+
+api:
+  clients:
+    ryanair:
+      baseUrl: https://www.ryanair.com
+    lot:
+      baseUrl: https://www.lot.com

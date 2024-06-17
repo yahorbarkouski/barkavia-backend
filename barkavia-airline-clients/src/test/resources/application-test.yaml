@@ -1,0 +1,6 @@
+api:
+  clients:
+    ryanair:
+      baseUrl: http://localhost:8060
+    lot:
+      baseUrl: http://localhost:8060
