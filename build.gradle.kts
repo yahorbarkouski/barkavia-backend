@@ -30,3 +30,7 @@ allprojects {
         }
     }
 }
+
+tasks.register("stage") {
+    dependsOn("build", "clean")
+}

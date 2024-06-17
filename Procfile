@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar barkavia-web-api/build/libs/barkavia-web-api.jar
