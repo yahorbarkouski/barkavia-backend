@@ -155,7 +155,11 @@ data class Airline(
  * @see <a href="https://en.wikipedia.org/wiki/List_of_airports_by_IATA_airport_code:_A">List of IATA airport codes</a>
  */
 @JvmInline
-value class AirportCode(val value: String)
+value class AirportCode(val value: String) {
+    init {
+        require(value.length == 3) { "Airport code must be exactly 3 characters long" }
+    }
+}
 
 /**
  * IATA airline code, e.g. `LO` for `LOT Polish Airlines`

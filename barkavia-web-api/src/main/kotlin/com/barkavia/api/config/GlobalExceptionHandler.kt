@@ -25,13 +25,6 @@ internal class GlobalExceptionHandler {
         return "Sorry, we can't process your request.".asErrorResponse(HttpStatus.BAD_REQUEST)
     }
 
-    @ExceptionHandler(Exception::class)
-    @ResponseStatus(HttpStatus.OK)
-    fun acceptNoErrorsExceptionHandler(e: Exception): ResponseEntity<ErrorResponse> {
-        log.error("Unhandled exception occurred", e)
-        return "Please try again later :)".asErrorResponse(HttpStatus.OK)
-    }
-
     private fun String.asErrorResponse(status: HttpStatus): ResponseEntity<ErrorResponse> {
         val errorResponse = ErrorResponse(
             status = status.value(),

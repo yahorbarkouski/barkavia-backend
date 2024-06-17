@@ -61,6 +61,16 @@ class TripsSearchEndpointTest : EndpointTest() {
             .andExpect(content().json(expectedSearch200EmptyResultsResponse))
     }
 
+    @Test
+    fun `search for trips with bad request returns bad request`() {
+        mockMvc
+            .perform(
+                post("/api/trips/search")
+                    .content(badSearchTripsRequest)
+                    .contentType(APPLICATION_JSON)
+            )
+            .andExpect(status().isBadRequest)
+    }
 
     private companion object {
 
@@ -68,6 +78,17 @@ class TripsSearchEndpointTest : EndpointTest() {
         val simpleSearchTripsRequest = """
         {
             "origin": "WAW",
+            "destination": "BCN",
+            "departureDate": "2024-01-01",
+            "returnDate": "2024-01-10",
+            "numberOfPassengers": 1
+        }
+        """.trimIndent()
+
+        @Language("JSON")
+        val badSearchTripsRequest = """
+        {
+            "origin": "WA",
             "destination": "BCN",
             "departureDate": "2024-01-01",
             "returnDate": "2024-01-10",
