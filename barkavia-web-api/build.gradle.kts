@@ -21,6 +21,8 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.3.1")
+    testImplementation(testFixtures(project(":barkavia-airline-clients")))
 }
 
 springBoot {

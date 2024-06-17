@@ -6,7 +6,7 @@ import java.time.Duration
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
-internal val lotSearchTripsOkResponse = LotTripsResponse(
+val lotSearchTripsOkResponse = LotTripsResponse(
     data = LotTripsResponse.Data(
         airBoundFlights = listOf(
             LotTripsResponse.Data.LotFlightResponse(
@@ -419,7 +419,7 @@ internal val lotSearchTripsOkResponse = LotTripsResponse(
     )
 )
 
-internal val lotInternalTripsResponse = TripsInternalResponse(
+val lotInternalTripsResponse = TripsInternalResponse(
     trips = listOf(
         TripsInternalResponse.Trip(
             originAirportCode = AirportCode("WAW"),

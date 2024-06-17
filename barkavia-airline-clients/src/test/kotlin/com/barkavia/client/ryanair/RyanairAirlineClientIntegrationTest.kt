@@ -7,7 +7,6 @@ import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import ryanairSearchTripsOkResponse
 import java.time.LocalDate.now
 
 internal class RyanairAirlineClientIntegrationTest : AirlineClientIntegrationTest() {

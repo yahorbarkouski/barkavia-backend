@@ -2,7 +2,6 @@ package com.barkavia.client.lot
 
 import com.barkavia.client.common.AirportCode
 import com.barkavia.client.common.SearchTripsInternalRequest
-import ryanairInternalTripsResponse
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.time.LocalDate

@@ -1,12 +1,13 @@
+package com.barkavia.client.ryanair
+
 import com.barkavia.client.common.AirportCode
 import com.barkavia.client.common.TripsInternalResponse
-import com.barkavia.client.ryanair.RyanairTripsResponse
 import java.time.OffsetDateTime
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.toJavaDuration
 
-internal val ryanairSearchTripsOkResponse = RyanairTripsResponse(
+val ryanairSearchTripsOkResponse = RyanairTripsResponse(
     currency = "PLN",
     currPrecision = 2,
     routeGroup = "LEISURE",
@@ -149,7 +150,7 @@ internal val ryanairSearchTripsOkResponse = RyanairTripsResponse(
     serverTimeUTC = "2024-06-17T10:57:54.043Z",
 )
 
-internal val ryanairInternalTripsResponse = TripsInternalResponse(
+val ryanairInternalTripsResponse = TripsInternalResponse(
     trips = listOf(
         TripsInternalResponse.Trip(
             originAirportCode = AirportCode("WMI"),

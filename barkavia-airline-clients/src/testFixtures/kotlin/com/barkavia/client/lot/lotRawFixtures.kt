@@ -3,7 +3,7 @@ package com.barkavia.client.lot
 import org.intellij.lang.annotations.Language
 
 @Language("JSON")
-internal val lotSearchTripsOkResponseRaw = """
+val lotSearchTripsOkResponseRaw = """
 {
   "errors": [],
   "warnings": [],
@@ -628,7 +628,7 @@ internal val lotSearchTripsOkResponseRaw = """
 """.trimIndent()
 
 @Language("JSON")
-internal val lotSearchTripsBadRequestResponseRaw = """
+val lotSearchTripsBadRequestResponseRaw = """
 {
   "errors": [
     {

@@ -3,7 +3,7 @@ package com.barkavia.client.ryanair
 import org.intellij.lang.annotations.Language
 
 @Language("JSON")
-internal const val ryanairSearchTripsOkResponseRaw = """
+const val ryanairSearchTripsOkResponseRaw = """
 {
   "termsOfUse": "https://www.ryanair.com/ie/en/corporate/terms-of-use=AGREED",
   "currency": "PLN",
@@ -150,7 +150,7 @@ internal const val ryanairSearchTripsOkResponseRaw = """
 """
 
 @Language("JSON")
-internal const val ryanairSearchTripsBadRequestResponseRaw = """
+const val ryanairSearchTripsBadRequestResponseRaw = """
 {
   "code": "InvalidRequestFields",
   "message": "InvalidRequestFields"

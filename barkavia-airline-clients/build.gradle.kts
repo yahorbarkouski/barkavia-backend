@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
+    `java-test-fixtures`
     id("io.spring.dependency-management") version "1.1.5"
 }
 
