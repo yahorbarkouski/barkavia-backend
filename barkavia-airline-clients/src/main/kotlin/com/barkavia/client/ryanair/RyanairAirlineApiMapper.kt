@@ -32,7 +32,7 @@ class RyanairAirlineApiMapper : AirlineApiMapper<RyanairSearchTripsRequest, Ryan
             trips = response.trips.flatMap { trip ->
                 trip.dates.flatMap { dates ->
                     dates.flights
-                        .filter { it.faresLeft > 0 }
+                        .filter { it.faresLeft > 0 || it.infantsLeft > 0 }
                         .map { flight ->
                             Trip(
                                 originAirportCode = AirportCode(flight.segments.first().origin),

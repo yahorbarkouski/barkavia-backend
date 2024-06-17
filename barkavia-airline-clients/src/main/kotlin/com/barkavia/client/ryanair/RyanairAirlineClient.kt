@@ -19,7 +19,7 @@ class RyanairAirlineClient(
     override suspend fun searchTrips(request: RyanairSearchTripsRequest): RyanairTripsResponse? {
         log.info("Searching for Ryanair trips...")
         val apiRequest = Request.Builder()
-            .url("$baseUrl/api/booking/v4/en-gb/availability?adults=${request.numberOfPassengers}&dateOut=${request.returnDate}&dateIn=${request.departureDate}&Destination=${request.destination}&Origin=${request.origin}&IncludeConnectingFlights=true&ToUs=AGREED&roundTrip=true&currency=EUR")
+            .url("$baseUrl/api/booking/v4/en-gb/availability?adults=${request.numberOfPassengers}&dateOut=${request.departureDate}&dateIn=${request.returnDate}&Destination=${request.destination}&Origin=${request.origin}&IncludeConnectingFlights=true&ToUs=AGREED&roundTrip=true&currency=EUR")
             .get()
             .addHeader("accept", "application/json, text/plain, */*")
             .addHeader(
