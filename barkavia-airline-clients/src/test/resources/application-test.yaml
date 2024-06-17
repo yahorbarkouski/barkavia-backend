@@ -2,5 +2,7 @@ api:
   clients:
     ryanair:
       baseUrl: http://localhost:8060
+      cookie: cookie
     lot:
       baseUrl: http://localhost:8060
+      xsrfToken: 123

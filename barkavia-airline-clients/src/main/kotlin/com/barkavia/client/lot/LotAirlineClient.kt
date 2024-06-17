@@ -13,18 +13,35 @@ import org.springframework.stereotype.Component
 @Component
 class LotAirlineClient(
     @Value("\${api.clients.lot.baseUrl}")
-    private val baseUrl: String
+    private val baseUrl: String,
+    @Value("\${api.clients.lot.xsrfToken}")
+    private val xsrfToken: String
 ) : AirlineClient<LotSearchTripsRequest, LotTripsResponse>() {
 
     private val log: Logger = LoggerFactory.getLogger(LotAirlineClient::class.java)
 
     override suspend fun searchTrips(request: LotSearchTripsRequest): LotTripsResponse? {
-        log.info("Searching for Lot Airline trips...")
-        val body = objectMapper.writeValueAsString(request).toRequestBody("application/json".toMediaType())
+        log.debug("Searching for Lot Airline trips...")
 
+        val body = objectMapper.writeValueAsString(request).toRequestBody("application/json".toMediaType())
         val apiRequest = Request.Builder()
             .url("$baseUrl/api/v1/ibe/search/air-bounds")
             .post(body)
+            .addHeadersWithXsrf(xsrfToken)
+            .build()
+
+        val response = okHttpClient.newCall(apiRequest).execute()
+        val responseBody = response.body?.string()
+        if (!response.isSuccessful) {
+            log.warn("Failed to get response from Lot API: $responseBody")
+            return null
+        }
+
+        return responseBody?.let { objectMapper.readValue(it) }
+    }
+
+    private fun Request.Builder.addHeadersWithXsrf(xsrfToken: String): Request.Builder {
+        return this
             .addHeader("accept", "application/json")
             .addHeader(
                 "accept-language",
@@ -50,17 +67,6 @@ class LotAirlineClient(
                 "user-agent",
                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
             )
-            .addHeader("x-xsrf-token", "6+FA14DLkeZweizEow1ibc9LDIiqhbs+I74sEvgZ/cu4Qk2I4fCoZeuUVJcnwIll")
-            .addHeader("Content-Type", "application/json")
-            .build()
-
-        val response = okHttpClient.newCall(apiRequest).execute()
-        val responseString = response.body?.string()
-        if (!response.isSuccessful) {
-            log.warn("Failed to get response from Lot API: $responseString")
-            return null
-        }
-
-        return objectMapper.readValue(responseString!!)
+            .addHeader("x-xsrf-token", xsrfToken)
     }
 }
