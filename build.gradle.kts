@@ -30,14 +30,3 @@ allprojects {
         }
     }
 }
-tasks.register<Copy>("copyToLib") {
-    from("$rootDir/barkavia-web-api/build/libs") {
-        include("*-api.jar")
-    }
-    into("$rootDir/build/libs")
-    rename { _ -> "app.jar" }
-}
-
-tasks.named("build").configure {
-    finalizedBy("copyToLib")
-}
