@@ -13,7 +13,13 @@ class WebMvcConfiguration {
         return object : WebMvcConfigurer {
             override fun addCorsMappings(registry: CorsRegistry) {
                 registry.addMapping("/**")
-                    .allowedOrigins("http://localhost:3000", "https://barkavia.com", "https://vercel.barkavia.app")
+                    .allowedOrigins(
+                        "http://localhost:3000",
+                        "https://barkavia.com",
+                        "https://barkavia.vercel.app",
+                        "https://www.barkavia.com",
+                        "https://www.barkavia.vercel.app"
+                    )
                     .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                     .allowedHeaders("*")
                     .allowCredentials(true)
